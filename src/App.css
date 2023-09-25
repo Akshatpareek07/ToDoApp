@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,13 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+.Header{
+  background-color: rgb(167, 97, 232);
+}
+h1{
+  padding: 0px;
+  margin: 0px;
 }
