@@ -2,6 +2,9 @@ import React, {useState,useEffect} from 'react';
 import './App.css';
 import {AiOutlineDelete} from 'react-icons/ai';
 import {BsCheckLg} from 'react-icons/bs';
+import ButtonComp  from './ButtonComp';
+
+
 
 function App() {
     const [isCompleteScreen,setIsCompleteScreen]=useState(false);
@@ -19,6 +22,7 @@ function App() {
        updateTodoArr.push(newTodoItem);
        setTodos(updateTodoArr);
        localStorage.setItem ('todolist', JSON.stringify (updateTodoArr));
+       
 
        
     }
@@ -83,12 +87,16 @@ function App() {
                         <input type="text" placeholder="Description of task" name="task_description" id="description" value={newDescription} onChange={(e)=>setnewDescription(e.target.value)}></input>
                     </div>
                     <div className="todo-input-button">
-                        <button type="button" className='primaryBtn' onClick={handleAddTodo}>ADD</button>
+
+                    <ButtonComp class="primaryBtn" event={handleAddTodo} toAdd="Add"/>
+                    {/* <button type="button" className='primaryBtn' onClick={handleAddTodo}>ADD</button> */}
                     </div>
                 </div>
                 <div className='btn-area'>
-                            <button className={`secondaryBtn ${isCompleteScreen===false && 'active'}`} onClick={()=>setIsCompleteScreen(false)}>Todo</button>
-                            <button className={`secondaryBtn ${isCompleteScreen===true && 'active'}`} onClick={()=>setIsCompleteScreen(true)}>Completed</button>
+                    {/* <button className={`secondaryBtn ${isCompleteScreen===false && 'active'}`} onClick={()=>setIsCompleteScreen(false)}>Todo</button>
+                    <button className={`secondaryBtn ${isCompleteScreen===true && 'active'}`} onClick={()=>setIsCompleteScreen(true)}>Completed</button> */}
+                    <ButtonComp class={`secondaryBtn ${isCompleteScreen===false && 'active'}`} event={()=>setIsCompleteScreen(false)} toAdd="ToDo"/>
+                    <ButtonComp class={`secondaryBtn ${isCompleteScreen===true && 'active'}`} event={()=>setIsCompleteScreen(true)} toAdd="Complete"/>
                 </div>
                 <div className='todo-list'>
                         
