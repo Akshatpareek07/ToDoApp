@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import './App.css';
 import {AiOutlineDelete} from 'react-icons/ai';
 import {BsCheckLg} from 'react-icons/bs';
-import ButtonComp  from './ButtonComp';
+import ButtonComp  from './component/ButtonComp';
 
 
 
@@ -89,17 +89,13 @@ function App() {
                     <div className="todo-input-button">
 
                     <ButtonComp class="primaryBtn" event={handleAddTodo} toAdd="Add"/>
-                    {/* <button type="button" className='primaryBtn' onClick={handleAddTodo}>ADD</button> */}
                     </div>
                 </div>
                 <div className='btn-area'>
-                    {/* <button className={`secondaryBtn ${isCompleteScreen===false && 'active'}`} onClick={()=>setIsCompleteScreen(false)}>Todo</button>
-                    <button className={`secondaryBtn ${isCompleteScreen===true && 'active'}`} onClick={()=>setIsCompleteScreen(true)}>Completed</button> */}
                     <ButtonComp class={`secondaryBtn ${isCompleteScreen===false && 'active'}`} event={()=>setIsCompleteScreen(false)} toAdd="ToDo"/>
                     <ButtonComp class={`secondaryBtn ${isCompleteScreen===true && 'active'}`} event={()=>setIsCompleteScreen(true)} toAdd="Complete"/>
                 </div>
                 <div className='todo-list'>
-                        
                         {isCompleteScreen===false && allTodos.map((item,index)=>{
                             return(
                             <div className='todo-list-item' key={index}>
@@ -110,7 +106,6 @@ function App() {
                                 <div>
                                     <AiOutlineDelete className='icon' onClick={()=>handelDeleteTodo(index)} title='Delete?'/>
                                     <BsCheckLg className='check-icon' onClick={()=>handleComplete(index)} title='Completed?'/>
-                                    
                                 </div>
                             </div>
                             )
