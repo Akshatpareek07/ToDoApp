@@ -1,9 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import './App.css';
-import {AiOutlineDelete} from 'react-icons/ai';
-import {BsCheckLg} from 'react-icons/bs';
 import ButtonComp  from './component/ButtonComp';
-
+import ListComp from './component/ListComp';
+import CompleteComp from './component/CompleteComp';
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
        setTodos(updateTodoArr);
        localStorage.setItem ('todolist', JSON.stringify (updateTodoArr));
        
-
        
     }
 
@@ -98,31 +96,22 @@ function App() {
                 <div className='todo-list'>
                         {isCompleteScreen===false && allTodos.map((item,index)=>{
                             return(
-                            <div className='todo-list-item' key={index}>
-                                <div>
-                                    <h3>{item.title}</h3>
-                                    <p>{item.description}</p>
-                                </div>
-                                <div>
-                                    <AiOutlineDelete className='icon' onClick={()=>handelDeleteTodo(index)} title='Delete?'/>
-                                    <BsCheckLg className='check-icon' onClick={()=>handleComplete(index)} title='Completed?'/>
-                                </div>
-                            </div>
+                            <ListComp
+                                key={index}
+                                itm={item}
+                                deleteEvent={()=>handelDeleteTodo(index)} 
+                                completeEvent={()=>handleComplete(index)} 
+                            />
                             )
                         }
                         )}
                         {isCompleteScreen===true &&completedTodos.map((item,index)=>{
                             return(
-                            <div className='todo-list-item' key={index}>
-                                <div>
-                                    <h3>{item.title}</h3>
-                                    <p>{item.description}</p>
-                                    <p><small>{item.completedOn}</small></p>
-                                </div>
-                                <div>
-                                    <AiOutlineDelete className='icon' onClick={()=>handelDeleteCompleteTodo(index)} title='Delete?'/>
-                                </div>
-                            </div>
+                            <CompleteComp
+                                    key={index}
+                                    itm={item}
+                                    deleteEvent={()=>handelDeleteCompleteTodo(index)} 
+                            />
                             )
                         }
                         )}
